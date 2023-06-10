@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  color.sun: yellow,orange
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-06-05T17:09:44Z"
+  name: cm-to-pod
+  namespace: default
+  resourceVersion: "263082"
+  uid: 424c72fe-5e7d-49d8-bfc1-3940e470a649
