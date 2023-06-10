@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: single-cm-key-2-pod-volume
+spec:
+  containers:
+    - name: specific-cm-key-2-volume-cname
+      image: registry.k8s.io/busybox
+      command: [ "/bin/sh","-c","sleep 3600","cat /etc/config/keys" ]
+      volumeMounts:
+      - name: config-volume
+        mountPath: /etc/config
+  volumes:
+    - name: config-volume
+      configMap:
+        name: single-key-cm-to-volume
+        items:
+        - key: welcometo
+          path: keys
+  restartPolicy: Never

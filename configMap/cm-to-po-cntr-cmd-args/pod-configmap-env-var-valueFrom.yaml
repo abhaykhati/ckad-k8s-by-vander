@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dapi-test-pod
+  labels:
+    name: dapi-test-pod
+spec:
+  containers:
+  - name: test-container
+    image: registry.k8s.io/busybox
+    command:
+      - "/bin/echo"
+      - "$(THANKS) $(WELCOME-TO); sleep 3600; "
+    env:
+      - name: THANKS
+        valueFrom: 
+          configMapKeyRef:
+            name: cm-kv-pod-cntr-to-cmd-args  
+            key: thanks  
+      - name: WELCOME-TO
+        valueFrom:
+          configMapKeyRef: 
+            name: cm-kv-pod-cntr-to-cmd-args
+            key: welcometo
+  restartPolicy: Never

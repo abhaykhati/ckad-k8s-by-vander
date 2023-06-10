@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  thanks: champ-abhay
+  welcometo: k8s-world-of-cloud-automation-ak
+kind: ConfigMap
+metadata:
+  name: single-key-cm-to-volume

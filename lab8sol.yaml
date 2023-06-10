@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: lab8sol
+  name: lab8sol
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lab8sol
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: lab8sol
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab8sol
+  labels:
+    app: lab8sol
+spec:
+  selector:
+    app: lab8sol
+  ports:
+  - port: 80 
+    targetPort: 80
+    protocol: TCP
+    nodePort: 30112
+  type: NodePort 
+status:
+  loadBalancer: {}

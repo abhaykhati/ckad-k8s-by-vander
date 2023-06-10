@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dapi-test-pod
+  labels:
+    name: dapi-test-pod
+spec:
+  containers:
+  - name: cm-test-container
+    image: registry.k8s.io/busybox
+    command: [ "/bin/sh", "-c", "sleep 3600; env " ]
+    envFrom:
+    - configMapRef:
+       name: all-cm-kv-pod-cntr
+  restartPolicy: Never

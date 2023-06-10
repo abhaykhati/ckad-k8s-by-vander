@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: akbusybox
+  labels:
+    name: akbusyboxLname
+spec:
+  containers:
+  - name: myappcname
+    image: busybox
+    args:
+      - sleep
+      - "2500" 
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"

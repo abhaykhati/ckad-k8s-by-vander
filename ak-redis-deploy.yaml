@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: akredis-deploy
+		name: aks-big-fat-deployment
+  name: akredis-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: akredis-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: akredis-deploy
+    spec:
+      containers:
+      - image: redis:alpine
+        name: redis
+        ports:
+        - containerPort: 6379
+        resources: {}
+status: {}
